@@ -1,6 +1,7 @@
 var express = require("express")
 var app = express();
 
+app.use(express.urlencoded({extended:false}))
 app.get("/",(req,res)=>{
     res.sendFile(__dirname + "/index.html")
 })
@@ -14,7 +15,9 @@ app.get("/users/:id",(req,res)=>{
     res.sendFile(__dirname + "/new.html")
 })
 app.post("/new",(req,res)=>{
-    res.sendFile(__dirname + "/new.html")
+    console.log(req.body);
+    res.json(req.body);
+
 })
 
 app.listen(4000,()=>{
