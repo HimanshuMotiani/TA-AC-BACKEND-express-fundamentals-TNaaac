@@ -1,13 +1,12 @@
-var express = require("express")
+var express = require("express");
+var logger = require("./logger")
+var jsonParser = require("./jsonParser");
 var app = express();
 
+app.use(logger)
+app.use(jsonParser)
 app.get("/",(req,res)=>{
-    console.log(req.method,req.url);
+    res.send("Hello");
 })
-app.get("/json",(req,res)=>{
-    JSON.parse(req.body)
-    console.log(req.method,req.url);
-})
-
 
 app.listen(4000,()=>{})
